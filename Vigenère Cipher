@@ -1,0 +1,17 @@
+# Vigenere Cipher (Polyalphabetic Substitution)
+
+text = input("Enter the plaintext: ").upper()
+key = input("Enter the keyword: ").upper()
+
+cipher = ""
+j = 0
+
+for ch in text:
+    if ch.isalpha():
+        shift = ord(key[j % len(key)]) - ord('A')
+        cipher += chr((ord(ch) - ord('A') + shift) % 26 + ord('A'))
+        j += 1
+    else:
+        cipher += ch
+
+print("Encrypted Message:", cipher)
