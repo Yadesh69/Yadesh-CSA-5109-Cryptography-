@@ -1,0 +1,26 @@
+alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+keyword = "CIPHER"
+
+cipher_alpha = ""
+
+for ch in keyword:
+    if ch not in cipher_alpha:
+        cipher_alpha += ch
+
+for ch in alphabet:
+    if ch not in cipher_alpha:
+        cipher_alpha += ch
+
+print("Cipher Alphabet:", cipher_alpha)
+
+text = input("Enter Plain Text: ").upper()
+
+cipher = ""
+
+for ch in text:
+    if ch in alphabet:
+        cipher += cipher_alpha[alphabet.index(ch)]
+    else:
+        cipher += ch
+
+print("Encrypted Text:", cipher)
