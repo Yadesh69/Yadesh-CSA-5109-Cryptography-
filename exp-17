@@ -1,0 +1,11 @@
+keys=[f"K{i}" for i in range(1,17)]
+
+print("Encryption Keys")
+
+print(keys)
+
+print()
+
+print("Decryption Keys")
+
+print(keys[::-1])
