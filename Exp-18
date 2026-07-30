@@ -1,0 +1,7 @@
+key=input("Enter 56-bit Key: ")
+
+print("Generating 16 DES Subkeys")
+
+for i in range(16):
+
+    print("Subkey",i+1)
