@@ -1,0 +1,11 @@
+from collections import Counter
+
+cipher=input("Enter Cipher Text: ").upper()
+
+freq=Counter(cipher)
+
+print("Letter Frequency")
+
+for k,v in freq.items():
+
+    print(k,"=",v)
