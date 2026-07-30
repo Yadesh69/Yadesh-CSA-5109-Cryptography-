@@ -1,0 +1,36 @@
+matrix = [
+    ['M','O','N','A','R'],
+    ['C','H','Y','B','D'],
+    ['E','F','G','I','K'],
+    ['L','P','Q','S','T'],
+    ['U','V','W','X','Z']
+]
+
+def find(ch):
+    if ch == 'J':
+        ch = 'I'
+    for i in range(5):
+        for j in range(5):
+            if matrix[i][j] == ch:
+                return i, j
+
+cipher = input("Enter Cipher Pair: ").upper()
+
+a = cipher[0]
+b = cipher[1]
+
+r1, c1 = find(a)
+r2, c2 = find(b)
+
+if r1 == r2:
+    print("Decrypted Pair:",
+          matrix[r1][(c1-1)%5],
+          matrix[r2][(c2-1)%5])
+elif c1 == c2:
+    print("Decrypted Pair:",
+          matrix[(r1-1)%5][c1],
+          matrix[(r2-1)%5][c2])
+else:
+    print("Decrypted Pair:",
+          matrix[r1][c2],
+          matrix[r2][c1])
