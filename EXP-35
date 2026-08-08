@@ -1,0 +1,19 @@
+def encrypt(plaintext, key):
+    result = ""
+
+    for i in range(len(plaintext)):
+        p = ord(plaintext[i].upper()) - ord('A')
+        c = (p + key[i]) % 26
+        result += chr(c + ord('A'))
+
+    return result
+
+
+plaintext = "HELLO"
+key = [3, 19, 5, 7, 11]
+
+ciphertext = encrypt(plaintext, key)
+
+print("Plaintext :", plaintext)
+print("Key       :", key)
+print("Ciphertext:", ciphertext)
