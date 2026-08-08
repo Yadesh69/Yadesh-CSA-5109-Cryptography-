@@ -1,0 +1,25 @@
+def frequency_attack(ciphertext, top=10):
+    results = []
+
+    for key in range(26):
+        plaintext = ""
+
+        for ch in ciphertext.upper():
+            if ch.isalpha():
+                c = ord(ch) - ord('A')
+                p = (c - key) % 26
+                plaintext += chr(p + ord('A'))
+            else:
+                plaintext += ch
+
+        results.append((key, plaintext))
+
+    return results[:top]
+
+
+ciphertext = input("Enter ciphertext: ")
+top = int(input("Enter number of possible plaintexts: "))
+
+print("\nPossible Plaintexts:")
+for key, text in frequency_attack(ciphertext, top):
+    print("Key", key, ":", text)
