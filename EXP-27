@@ -1,0 +1,21 @@
+# Simple RSA demonstration
+
+e = 17
+n = 3233
+
+message = input("Enter Message (A-Z): ").upper()
+
+cipher = []
+
+for ch in message:
+    if ch.isalpha():
+        m = ord(ch) - ord('A')
+        c = pow(m, e, n)
+        cipher.append(c)
+
+print("Ciphertext:")
+print(cipher)
+
+print("\nNote:")
+print("Encrypting each letter separately is insecure.")
+print("An attacker can build a lookup table for all 26 letters.")
