@@ -1,0 +1,28 @@
+from collections import Counter
+
+def additive_attack(ciphertext, top=10):
+    freq = Counter(ciphertext.upper().replace(" ", ""))
+    most_common = freq.most_common(1)[0][0]
+
+    results = []
+
+    for shift in range(26):
+        plaintext = ""
+
+        for ch in ciphertext.upper():
+            if ch.isalpha():
+                c = ord(ch) - 65
+                p = (c - shift) % 26
+                plaintext += chr(p + 65)
+            else:
+                plaintext += ch
+
+        results.append((shift, plaintext))
+
+    return results[:top]
+
+
+cipher = "KHOOR"
+
+for shift, text in additive_attack(cipher, 10):
+    print("Shift:", shift, "->", text)
