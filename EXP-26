@@ -1,0 +1,22 @@
+from math import gcd
+
+# Original modulus
+p = 61
+q = 53
+n = p * q
+phi = (p - 1) * (q - 1)
+
+# New public key
+e = 17
+
+# Find private key
+for d in range(2, phi):
+    if (e * d) % phi == 1:
+        break
+
+print("New Public Key (e, n):", (e, n))
+print("New Private Key (d, n):", (d, n))
+
+print("\nNote:")
+print("Changing only e and d while keeping the same modulus n is NOT secure.")
+print("A new modulus (new p and q) must also be generated.")
