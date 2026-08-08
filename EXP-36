@@ -1,0 +1,19 @@
+def affine_encrypt(text, a, b):
+    result = ""
+
+    for ch in text.upper():
+        if ch.isalpha():
+            p = ord(ch) - ord('A')
+            c = (a * p + b) % 26
+            result += chr(c + ord('A'))
+
+    return result
+
+
+plaintext = "HELLO"
+a = 5
+b = 8
+
+print("Plaintext :", plaintext)
+print("a =", a, "b =", b)
+print("Ciphertext:", affine_encrypt(plaintext, a, b))
