@@ -1,0 +1,21 @@
+# Simplified DES demonstration in Python
+
+def des_encrypt(block, key):
+    # Simple XOR-based demonstration of DES concept
+    return block ^ key
+
+
+def des_decrypt(ciphertext, key):
+    return ciphertext ^ key
+
+
+plaintext = 0x1234567890ABCDEF
+key = 0x133457799BBCDFF1
+
+ciphertext = des_encrypt(plaintext, key)
+decrypted = des_decrypt(ciphertext, key)
+
+print("Plaintext  :", hex(plaintext))
+print("Key        :", hex(key))
+print("Ciphertext :", hex(ciphertext))
+print("Decrypted  :", hex(decrypted))
