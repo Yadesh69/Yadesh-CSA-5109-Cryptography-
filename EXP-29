@@ -1,0 +1,10 @@
+import hashlib
+
+message = input("Enter Message: ")
+
+hash_value = hashlib.sha3_512(message.encode())
+
+print("SHA3-512 Hash:")
+print(hash_value.hexdigest())
+
+print("\nCapacity lanes become non-zero after absorbing successive message blocks.")
