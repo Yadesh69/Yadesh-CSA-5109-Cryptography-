@@ -1,0 +1,36 @@
+# ECB, CBC and CFB modes - Padding demonstration
+
+BLOCK_SIZE = 8
+
+def pad(data):
+    # 1 bit followed by zeros
+    pad_len = BLOCK_SIZE - (len(data) % BLOCK_SIZE)
+    return data + b'\x80' + b'\x00' * (pad_len - 1)
+
+def xor(a, b):
+    return bytes(x ^ y for x, y in zip(a, b))
+
+plaintext = b"ABCDEFGH"
+
+print("Original Plaintext :", plaintext)
+
+padded = pad(plaintext)
+print("Padded Plaintext   :", padded)
+
+# ECB
+ecb = xor(padded[:8], b"12345678")
+print("ECB Block          :", ecb)
+
+# CBC
+iv = b"12345678"
+cbc = xor(padded[:8], iv)
+print("CBC Block          :", cbc)
+
+# CFB
+cfb = xor(padded[:8], iv)
+print("CFB Segment         :", cfb)
+
+print("\nMotivation:")
+print("Padding every message makes the final block ambiguous.")
+print("It prevents an attacker from determining whether padding was needed")
+print("based only on the message length.")
