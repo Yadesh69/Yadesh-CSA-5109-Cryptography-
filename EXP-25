@@ -1,0 +1,12 @@
+from math import gcd
+
+n = int(input("Enter n: "))
+plaintext = int(input("Enter suspected plaintext block: "))
+
+factor = gcd(n, plaintext)
+
+if factor > 1:
+    print("Common Factor Found:", factor)
+    print("Other Factor:", n // factor)
+else:
+    print("No Common Factor")
