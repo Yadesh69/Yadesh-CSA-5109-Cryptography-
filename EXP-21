@@ -1,0 +1,23 @@
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad, unpad
+from Crypto.Random import get_random_bytes
+
+key = get_random_bytes(16)
+iv = get_random_bytes(16)
+
+plaintext = input("Enter Plaintext: ").encode()
+
+# ECB
+ecb = AES.new(key, AES.MODE_ECB)
+ecb_cipher = ecb.encrypt(pad(plaintext, 16))
+print("ECB Cipher:", ecb_cipher.hex())
+
+# CBC
+cbc = AES.new(key, AES.MODE_CBC, iv)
+cbc_cipher = cbc.encrypt(pad(plaintext, 16))
+print("CBC Cipher:", cbc_cipher.hex())
+
+# CFB
+cfb = AES.new(key, AES.MODE_CFB, iv)
+cfb_cipher = cfb.encrypt(plaintext)
+print("CFB Cipher:", cfb_cipher.hex())
